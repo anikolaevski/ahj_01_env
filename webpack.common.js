@@ -12,7 +12,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include : APP_DIR,
+        include : APP_DIR + '/js',
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -23,13 +23,17 @@ module.exports = {
         use: [
           {
             loader: 'html-loader',
+            options: {
+              root: './src/index.html',
+            }
           },
         ],
       },
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader',
+          MiniCssExtractPlugin.loader, 
+          'css-loader',
         ],
       },
       {
@@ -48,13 +52,7 @@ module.exports = {
     ],
   },
   plugins: [
-   new HtmlWebPackPlugin({
-     template: './src/index.html',
-     filename: './index.html',
-   }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
+    new HtmlWebPackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
 };
