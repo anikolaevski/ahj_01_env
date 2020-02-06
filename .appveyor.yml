@@ -10,6 +10,7 @@ cache: node_modules  # кеширование
 
 install:
   - npm install  # команда установки зависимостей
+  - npm install --save-dev babel-loader
 
 build: off
 
